@@ -1,4 +1,4 @@
-# udacity_sensor_fusion_and_obect_tracking
+# udacity_sensor_fusion_and_object_tracking
 
 ## Step 1: Implement an EKF
 
