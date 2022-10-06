@@ -16,11 +16,8 @@
 
 ## Step 4:  Nonlinear Camera Measurement Model and Camera-Lidar Fusion Module
 
-Here is my initial attempt at Step 4. The tracking seems to work well until the very end of the sequence when a new track (22) is initialized on the same vehicle as track 1. This didn't happen in Step 3, so it must be related to the camera-lidar fusion. The vehicle in track 1 seems to be occluded by the track 0 vehicle and for some reason a new track (22) is initialized. Here is the console output:
-
-![image](https://user-images.githubusercontent.com/7365421/194385741-833dc277-ce94-4f85-95bd-9bec0820b5b2.png)
-![image](https://user-images.githubusercontent.com/7365421/194385887-d0d185f2-3afe-4f1b-8f8b-e77c5dc4f05b.png)
-
+![image](https://user-images.githubusercontent.com/7365421/194413664-9a56d6e6-a193-4f7b-b206-df5615b976f8.png)
+![image](https://user-images.githubusercontent.com/7365421/194413786-f2c53e45-e8c0-4364-8af5-7ce0a66e3c9d.png)
 
 ## Write-up Questions
 
@@ -32,9 +29,18 @@ Step 2: Track Management - This also seemed very straight-forward programming ta
 
 Step 3: Multi-target Tracking - This worked quite well. In this step, only the lidar measurements were used, but vehicles could be tracked accurately.
 
-Step 4: Sensor Fusion - I really didn't see any improvement by adding the camera from the results in Step 3. In fact, the results got a little worse since one of the tracks went from Confirmed to Tentative in Step 4, where it remained Confirmed in Step 3. It seems that the vehicle was occluded by another vehicle so it seems reasonable. It just changed from Confirmed to Tentative right at the very end of the sequence so maybe by changing the thresholds slightly, I could have kept it from dropping from Confirmed to Tentative. However, I think the performance seems quite reasonable. 
+Step 4: Sensor Fusion - This was certainly the most challenging part of the project for me. I initially had a bug in my code so that confirmed Track #1 was deleted in Frame #198 and a tentative track took its place. The tracking worked well right up until the last 2 frames, when there was no lidar measurement associated with Track #1. For some reason, this didn't happen in Step 3 when using lidar alone, which was very strange. It turned out that the problem was in my gating function. I had been setting df as follows:  
+        if sensor.name == "lidar":  
+            dof = 2  
+        else:  
+            dof = 1  
+        limit = chi2.ppf(params.gating_threshold, df=dof)  
+However, on Lesson 19 on gating, I read that the dof should equal the dimension of the measurement space so I changed the code to:  
+        limit = chi2.ppf(params.gating_threshold, df=sensor.dim_meas)  
+which increased the dof by 1 for each sensor. This solved my problem!!! I had tried changing other parameters without success.
 
-The most difficult part of the project for me was probably initializing the camera measurement including z, R. I was a little confused about this, but found some help from the Mentors on the Knowledge site. Also, I am confused by my result from Step 4. I am not sure why Track 1 was deleted and replaced by Track 22, which is a recent tentative track. I don't know if there is an error in my project or not. My code seems correct to me, but the result is unexpected.
+Once the bug was fixed, I got good results for Step 4, as shown above.
+
 
 ### Do you see any benefits in camera-lidar fusion compared to lidar-only tracking (in theory and in your concrete results)?
 
