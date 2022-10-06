@@ -29,7 +29,7 @@ Step 3: Multi-target Tracking - This worked quite well. In this step, only the l
 
 Step 4: Sensor Fusion - I really didn't see any improvement by adding the camera from the results in Step 3. In fact, the results got a little worse since one of the tracks went from Confirmed to Tentative in Step 4, where it remained Confirmed in Step 3. It seems that the vehicle was occluded by another vehicle so it seems reasonable. It just changed from Confirmed to Tentative right at the very end of the sequence so maybe by changing the thresholds slightly, I could have kept it from dropping from Confirmed to Tentative. However, I think the performance seems quite reasonable. 
 
-The most difficult part of the project for me was probably initializing the camera measurement including z, R. I was a little confused about this, but found some help from the Mentors on the Knowledge site.
+The most difficult part of the project for me was probably initializing the camera measurement including z, R. I was a little confused about this, but found some help from the Mentors on the Knowledge site. Also, I am confused by my result from Step 4. I am not sure why Track 1 was deleted and replaced by Track 22, which is a recent tentative track. I don't know if there is an error in my project or not. My code seems correct to me, but the result is unexpected.
 
 ### Do you see any benefits in camera-lidar fusion compared to lidar-only tracking (in theory and in your concrete results)?
 
