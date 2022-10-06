@@ -91,7 +91,7 @@ class Sensor:
             pos_sens = self.veh_to_sens * pos_veh # transform from vehicle to camera coordinates
                         
             # calculate nonlinear measurement expectation value h(x)   
-            hx = np.zeros((2,1))
+            hx = np.matrix(np.zeros((2,1)))
             # check and print error message if dividing by zero
             if pos_sens[0]==0:
                 raise NameError('Jacobian not defined for pos_sens[0]=0!')

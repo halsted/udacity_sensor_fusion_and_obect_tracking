@@ -63,6 +63,7 @@ class Association:
                 dist = self.MHD(track, meas, KF)
                 if self.gating(dist, meas.sensor):
                     self.association_matrix[i,j] = dist
+        #print(self.association_matrix)
                         
         '''
         # the following only works for at most one track and one measurement
@@ -137,11 +138,7 @@ class Association:
         # TODO Step 3: return True if measurement lies inside gate, otherwise False
         ############
 
-        if sensor.name == "lidar":
-            dof = 2
-        else:
-            dof = 1
-        limit = chi2.ppf(params.gating_threshold, df=dof)
+        limit = chi2.ppf(params.gating_threshold, df=sensor.dim_meas)
         if MHD < limit:
             return True
         else:
@@ -194,6 +191,7 @@ class Association:
             manager.handle_updated_track(track)
             
             # save updated track
+
             manager.track_list[ind_track] = track
             
         # run track management 
