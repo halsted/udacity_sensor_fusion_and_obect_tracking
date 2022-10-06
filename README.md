@@ -43,7 +43,7 @@ However, on Lesson 19 on gating, I read that the dof should equal the dimension 
 
 limit = chi2.ppf(params.gating_threshold, df=sensor.dim_meas)  
 
-which increased the dof by 1 for each sensor. This solved my problem!!! I had tried changing other parameters without success. Once the bug was fixed, I got good results for Step 4, as shown above.
+which increased the dof by 1 for each sensor. This solved my problem!!! I had tried changing other parameters without success. Once the bug was fixed, I got good results for Step 4, as shown above. I also uploaded an mp4 video showing my tracking results for Step 4. The tracking worked very well!
 
 ### Do you see any benefits in camera-lidar fusion compared to lidar-only tracking (in theory and in your concrete results)?
 
