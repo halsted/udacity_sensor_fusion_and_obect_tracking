@@ -23,6 +23,7 @@ Note: I am using the Udacity workspace to develop and test my code.
 
 https://user-images.githubusercontent.com/7365421/194430938-5abf1e39-01e9-420c-85f6-01129d242a0e.mp4
 
+
 ## Write-up Questions
 
 ### Write a short recap of the four tracking steps and what you implemented there (EKF, track management, data association, camera-lidar sensor fusion). Which results did you achieve? Which part of the project was most difficult for you to complete, and why?
