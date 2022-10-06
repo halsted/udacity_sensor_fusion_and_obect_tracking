@@ -31,7 +31,7 @@ Step 2: Track Management - This also seemed very straight-forward programming ta
 
 Step 3: Multi-target Tracking - This worked quite well. In this step, only the lidar measurements were used, but vehicles could be tracked accurately.
 
-Step 4: Sensor Fusion - This was certainly the most challenging part of the project for me. I initially had a bug in my code so that confirmed Track #1 was deleted in Frame #198 and a tentative track took its place. The tracking worked well right up until the last 2 frames, when there was no lidar measurement associated with Track #1. For some reason, this didn't happen in Step 3 when using lidar alone, which was very strange. It turned out that the problem was in my gating function. I had been setting df as follows:  
+Step 4: Sensor Fusion - In this part, I added code so that the camera is used along with the lidar using sensor fusion. The coding exercises in this part were not too difficult. However, I initially had a bug in my code so that confirmed Track #1 was deleted in Frame #198 and a tentative track took its place. The tracking worked well right up until the last 2 frames, when there was no lidar measurement associated with Track #1. For some reason, this didn't happen in Step 3 when using lidar alone, which was very strange. It turned out that the problem was in my gating function. I had been setting df as follows:  
 
 if sensor.name == "lidar":  
 &emsp;dof = 2  
