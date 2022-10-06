@@ -16,8 +16,13 @@
 
 ## Step 4:  Nonlinear Camera Measurement Model and Camera-Lidar Fusion Module
 
-![image](https://user-images.githubusercontent.com/7365421/194179531-71eafb53-5ca8-4eee-bd1e-a60e99765725.png)
-![image](https://user-images.githubusercontent.com/7365421/194179587-03fb83cb-abde-4d73-8048-13bcb6bb0331.png)
+Here is my initial attempt at Step 4. The tracking seems to work well until the very end of the sequence when a new track (22) is initialized on the same vehicle as track 1. This didn't happen in Step 3, so it must be related to the camera-lidar fusion. The vehicle in track 1 seems to be occluded by the track 0 vehicle and for some reason a new track (22) is initialized. Here is the console output:
+
+![image](https://user-images.githubusercontent.com/7365421/194385741-833dc277-ce94-4f85-95bd-9bec0820b5b2.png)
+![image](https://user-images.githubusercontent.com/7365421/194385887-d0d185f2-3afe-4f1b-8f8b-e77c5dc4f05b.png)
+
+
+## Write-up Questions
 
 ### Write a short recap of the four tracking steps and what you implemented there (EKF, track management, data association, camera-lidar sensor fusion). Which results did you achieve? Which part of the project was most difficult for you to complete, and why?
 
